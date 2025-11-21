@@ -1,4 +1,5 @@
 import Newsletter from './components/Newsletter'
+import UPICheckout from './components/UPICheckout'
 
 function App() {
   return (
@@ -63,6 +64,22 @@ function App() {
                 {t}
               </div>
             ))}
+          </div>
+        </section>
+
+        {/* Payment CTA with UPI */}
+        <section id="buy" className="max-w-6xl mx-auto px-6 pb-16">
+          <div className="grid md:grid-cols-2 gap-6 items-center">
+            <div className="rounded-2xl border border-neutral-800 bg-neutral-900/60 p-6">
+              <h3 className="text-white text-2xl font-bold">Ultimate Creator Kit</h3>
+              <p className="text-neutral-300 mt-2">All-in-one Notion, Figma, and marketing assets to launch faster.</p>
+              <ul className="mt-4 text-neutral-300 text-sm list-disc pl-5 space-y-1">
+                <li>Instant download</li>
+                <li>Lifetime updates</li>
+                <li>License for personal and commercial use</li>
+              </ul>
+            </div>
+            <UPICheckout amountPaise={49900} label="Buy with UPI" />
           </div>
         </section>
 
