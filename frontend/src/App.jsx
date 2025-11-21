@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react'
+import { BrowserRouter, Routes, Route, Link } from 'react-router-dom'
 import Spline from '@splinetool/react-spline'
+import ProductDetail from './components/ProductDetail.jsx'
 
 const API_BASE = import.meta.env.VITE_BACKEND_URL || 'http://localhost:8000'
 
@@ -42,19 +44,24 @@ function TrustBar() {
 function ProductCard({ item, onBuy }) {
   return (
     <div className="group border border-gray-200 rounded-xl p-4 hover:shadow-lg transition bg-white">
-      <div className="aspect-video w-full rounded-lg bg-gray-100 overflow-hidden">
+      <Link to={`/p/${item.slug || item._id}`} className="block aspect-video w-full rounded-lg bg-gray-100 overflow-hidden">
         {item.cover_url ? (
           <img src={item.cover_url} alt={item.title} className="w-full h-full object-cover" />
         ) : (
           <div className="w-full h-full grid place-items-center text-gray-500">No Cover</div>
         )}
-      </div>
-      <h3 className="mt-4 font-semibold text-gray-900 line-clamp-2">{item.title}</h3>
+      </Link>
+      <h3 className="mt-4 font-semibold text-gray-900 line-clamp-2">
+        <Link to={`/p/${item.slug || item._id}`} className="hover:underline">{item.title}</Link>
+      </h3>
       <div className="mt-2 flex items-center justify-between">
         <span className="text-gray-900 font-semibold">${item.price.toFixed(2)}</span>
         <span className="text-yellow-500">★★★★★</span>
       </div>
-      <button onClick={() => onBuy(item)} className="mt-4 w-full rounded-lg bg-gray-900 text-white py-2.5 hover:bg-black transition">Buy Now</button>
+      <div className="mt-4 grid grid-cols-2 gap-2">
+        <Link to={`/p/${item.slug || item._id}`} className="rounded-lg border border-gray-200 py-2.5 text-center hover:bg-gray-50">Details</Link>
+        <button onClick={() => onBuy(item)} className="rounded-lg bg-gray-900 text-white py-2.5 hover:bg-black transition">Buy Now</button>
+      </div>
     </div>
   )
 }
@@ -166,7 +173,7 @@ function ValueProps() {
   )
 }
 
-export default function App() {
+function Home() {
   return (
     <div className="min-h-screen bg-white text-gray-900">
       <Hero />
@@ -175,5 +182,17 @@ export default function App() {
       <ValueProps />
       <footer className="py-10 text-center text-sm text-gray-500">© {new Date().getFullYear()} Digital Store. Secure checkout. No hidden fees.</footer>
     </div>
+  )
+}
+
+export default function App() {
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/p/:slug" element={<ProductDetail />} />
+        <Route path="*" element={<Home />} />
+      </Routes>
+    </BrowserRouter>
   )
 }
