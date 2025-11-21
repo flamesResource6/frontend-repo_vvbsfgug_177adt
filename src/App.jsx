@@ -1,71 +1,86 @@
+import Newsletter from './components/Newsletter'
+
 function App() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
-      {/* Subtle pattern overlay */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(59,130,246,0.05),transparent_50%)]"></div>
+    <div className="min-h-screen bg-neutral-950">
+      {/* Red and black theme background with soft gradient */}
+      <div className="absolute inset-0 bg-gradient-to-br from-neutral-950 via-black to-neutral-950" />
+      <div className="absolute inset-0 pointer-events-none" aria-hidden>
+        <div className="w-full h-full opacity-[0.07] bg-[radial-gradient(circle_at_20%_20%,rgba(239,68,68,0.35),transparent_35%),_radial-gradient(circle_at_80%_10%,rgba(220,38,38,0.25),transparent_30%),_radial-gradient(circle_at_50%_80%,rgba(239,68,68,0.25),transparent_35%)]" />
+      </div>
 
-      <div className="relative min-h-screen flex items-center justify-center p-8">
-        <div className="max-w-2xl w-full">
-          {/* Header with Flames icon */}
-          <div className="text-center mb-12">
-            <div className="inline-flex items-center justify-center mb-6">
-              <img
-                src="/flame-icon.svg"
-                alt="Flames"
-                className="w-24 h-24 drop-shadow-[0_0_25px_rgba(59,130,246,0.5)]"
-              />
-            </div>
-
-            <h1 className="text-5xl font-bold text-white mb-4 tracking-tight">
-              Flames Blue
-            </h1>
-
-            <p className="text-xl text-blue-200 mb-6">
-              Build applications through conversation
-            </p>
+      <header className="relative z-10">
+        <div className="max-w-6xl mx-auto px-6 pt-10 pb-6 flex items-center justify-between">
+          <div className="flex items-center gap-3">
+            <div className="h-9 w-9 rounded-xl bg-red-600 shadow-[0_0_20px_rgba(239,68,68,0.6)]" />
+            <span className="text-white text-lg font-semibold tracking-tight">Flames Store</span>
           </div>
+          <nav className="hidden md:flex items-center gap-6 text-sm">
+            <a href="#products" className="text-neutral-300 hover:text-white transition">Products</a>
+            <a href="#about" className="text-neutral-300 hover:text-white transition">About</a>
+            <a href="#contact" className="text-neutral-300 hover:text-white transition">Contact</a>
+          </nav>
+          <a href="#buy" className="inline-flex items-center gap-2 rounded-xl bg-red-600 text-white px-4 py-2 font-medium shadow-[0_10px_30px_-10px_rgba(239,68,68,0.8)] hover:bg-red-500 transition">
+            Buy Now
+          </a>
+        </div>
+      </header>
 
-          {/* Instructions */}
-          <div className="bg-slate-800/50 backdrop-blur-sm border border-blue-500/20 rounded-2xl p-8 shadow-xl mb-6">
-            <div className="flex items-start gap-4 mb-6">
-              <div className="flex-shrink-0 w-8 h-8 bg-blue-500 text-white rounded-lg flex items-center justify-center font-bold">
-                1
+      <main className="relative z-10">
+        {/* Hero */}
+        <section className="max-w-6xl mx-auto px-6 pt-10 pb-16 md:pt-20 md:pb-24">
+          <div className="grid md:grid-cols-2 gap-10 items-center">
+            <div>
+              <div className="inline-flex items-center gap-2 rounded-full bg-red-600/10 border border-red-500/30 px-3 py-1 text-red-400 text-xs mb-4">
+                New • Digital products for creators
               </div>
-              <div>
-                <h3 className="font-semibold text-white mb-1">Describe your idea</h3>
-                <p className="text-blue-200/80 text-sm">Use the chat panel on the left to tell the AI what you want to build</p>
+              <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight text-white leading-tight">
+                Launch faster with premium digital templates
+              </h1>
+              <p className="mt-4 text-neutral-300 text-lg">
+                Beautiful, conversion-focused assets made for modern creators. Instant download after purchase.
+              </p>
+              <div className="mt-6 flex flex-col sm:flex-row gap-3">
+                <a href="#products" className="inline-flex items-center justify-center rounded-xl bg-red-600 text-white px-5 py-3 font-medium shadow-[0_10px_30px_-10px_rgba(239,68,68,0.8)] hover:bg-red-500 transition">
+                  Browse Products
+                </a>
+                <a href="#learn" className="inline-flex items-center justify-center rounded-xl border border-neutral-700 text-white px-5 py-3 font-medium hover:bg-neutral-900 transition">
+                  Learn More
+                </a>
               </div>
             </div>
-
-            <div className="flex items-start gap-4 mb-6">
-              <div className="flex-shrink-0 w-8 h-8 bg-blue-500 text-white rounded-lg flex items-center justify-center font-bold">
-                2
-              </div>
-              <div>
-                <h3 className="font-semibold text-white mb-1">Watch it build</h3>
-                <p className="text-blue-200/80 text-sm">Your app will appear in this preview as the AI generates the code</p>
-              </div>
-            </div>
-
-            <div className="flex items-start gap-4">
-              <div className="flex-shrink-0 w-8 h-8 bg-blue-500 text-white rounded-lg flex items-center justify-center font-bold">
-                3
-              </div>
-              <div>
-                <h3 className="font-semibold text-white mb-1">Refine and iterate</h3>
-                <p className="text-blue-200/80 text-sm">Continue the conversation to add features and make changes</p>
-              </div>
+            <div className="relative">
+              <div className="aspect-[4/3] rounded-2xl bg-gradient-to-br from-red-700 via-red-600 to-rose-600 shadow-[0_40px_100px_-30px_rgba(239,68,68,0.7)]" />
+              <div className="absolute -bottom-6 -left-6 h-24 w-24 rounded-2xl bg-red-600/30 blur-2xl" />
+              <div className="absolute -top-6 -right-6 h-24 w-24 rounded-2xl bg-rose-500/30 blur-2xl" />
             </div>
           </div>
 
-          {/* Footer */}
-          <div className="text-center">
-            <p className="text-sm text-blue-300/60">
-              No coding required • Just describe what you want
-            </p>
+          {/* Trust bar */}
+          <div className="mt-14 grid grid-cols-2 sm:grid-cols-4 gap-4">
+            {['Instant Download','Secure Checkout','Lifetime Access','Free Updates'].map((t) => (
+              <div key={t} className="rounded-xl border border-neutral-800 bg-neutral-900/60 text-neutral-300 text-sm px-4 py-3 text-center">
+                {t}
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Newsletter */}
+        <section className="max-w-6xl mx-auto px-6 pb-16">
+          <Newsletter variant="dark" />
+        </section>
+      </main>
+
+      <footer className="relative z-10 border-t border-neutral-800/80">
+        <div className="max-w-6xl mx-auto px-6 py-10 text-neutral-400 text-sm flex flex-col md:flex-row items-center justify-between gap-4">
+          <p>© {new Date().getFullYear()} Flames Store. All rights reserved.</p>
+          <div className="flex items-center gap-4">
+            <a href="#privacy" className="hover:text-white">Privacy</a>
+            <a href="#terms" className="hover:text-white">Terms</a>
           </div>
         </div>
-      </div>
+      </footer>
     </div>
   )
 }
